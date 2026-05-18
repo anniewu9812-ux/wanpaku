@@ -988,28 +988,34 @@
 <script>
 const wishData = [
   // ── 已製作 ──
-  { id: 'suishinshi', name: '水心子正秀', wishes: [], made: true, photo: 'https://raw.githubusercontent.com/anniewu9812-ux/wanpaku/main/水心子正秀.jpg' },
-  { id: 'buzen', name: '豊前江', wishes: [], made: true, photo: 'https://raw.githubusercontent.com/anniewu9812-ux/wanpaku/main/豊前江.jpg' },
-  { id: 'izumi', name: '和泉守兼定', wishes: [], made: true, photo: null },
+  // made: true 的角色不需要 count／hasSize，直接填 photo 網址即可
+  { id: 'suishinshi', name: '水心子正秀', made: true, photo: 'https://raw.githubusercontent.com/anniewu9812-ux/wanpaku/main/水心子正秀.jpg' },
+  { id: 'buzen',      name: '豊前江',     made: true, photo: 'https://raw.githubusercontent.com/anniewu9812-ux/wanpaku/main/豊前江.jpg' },
+  { id: 'izumi',      name: '和泉守兼定', made: true, photo: null },
+
   // ── 許願中 ──
-  { id: 'yamanbagiri_kuni', name: '山姥切国広', wishes: [{size:null},{size:null}],{size:null}], made: false, photo: null, wip: null },
-  { id: 'yamanbagiri_naga', name: '山姥切長義', wishes: [{size:null},{size:null}],{size:null}], made: false, photo: null, wip: null },
-  { id: 'fanjin', name: '泛塵', wishes: [{size:null}], made: false, photo: null, wip: null },
-  { id: 'yamatonokami', name: '大和守安定', wishes: [{size:null}], made: false, photo: null, wip: null },
-  { id: 'tsurumaru', name: '鶴丸国永', wishes: [{size:'未脫'},{size:null}], made: false, photo: null, wip: '紋樣繪製中' },
-  { id: 'hasebe', name: 'へし切長谷部', wishes: [{size:'未脫'},{size:'未脫'}], made: false, photo: null, wip: null },
-  { id: 'imanotsurugi', name: '今剣', wishes: [{size:'未脫'}], made: false, photo: null, wip: null },
-  { id: 'hime', name: '姫鶴一文字', wishes: [{size:null}], made: false, photo: null, wip: null },
-  { id: 'juzumaru', name: '数珠丸恒次', wishes: [{size:null}], made: false, photo: null, wip: null },
-  { id: 'kogarasumaru', name: '小烏丸', wishes: [{size:null}], made: false, photo: null, wip: null },
-  { id: 'shinano', name: '信濃藤四郎', wishes: [{size:'未脫'}], made: false, photo: null, wip: null },
-  { id: 'kogitsune', name: '小狐丸', wishes: [{size:null}], made: false, photo: null, wip: null },
-  { id: 'mutsunokami', name: '陸奥守吉行', wishes: [{size:null}], made: false, photo: null, wip: null },
-  { id: 'hizen', name: '肥前忠広', wishes: [{size:null}],{size:'未脫'}], made: false, photo: null, wip: null },
-  { id: 'hachisuka', name: '蜂須賀虎徹', wishes:  [{size:'已脫'}], made: false, photo: null, wip: null },
-  { id: 'nagasone', name: '長曽祢虎徹', wishes: [{size:'已脫'}], made: false, photo: null, wip: null },
-  { id: 'horikawa', name: '堀川国広', wishes:  [{size:'未脫'}], made: false, photo: null, wip: null },
-  { id: 'matsui', name: '松井江', wishes: [{size:'已脫'}], made: false, photo: null, wip: null }
+  // count    → 許願次數（直接填數字）
+  // hasSize  → 是否有人提供尺寸（true / false）
+  // sizeType → '未脫' / '脫衣' / null（沒有尺寸時填 null）
+  // wip      → 製作進度標註（null 表示無）
+  { id: 'yamanbagiri_kuni', name: '山姥切国広', count: 3, hasSize: false, sizeType: null,   made: false, photo: null, wip: null },
+  { id: 'yamanbagiri_naga', name: '山姥切長義', count: 3, hasSize: false, sizeType: null,   made: false, photo: null, wip: null },
+  { id: 'fanjin',           name: '泛塵',       count: 1, hasSize: false, sizeType: null,   made: false, photo: null, wip: null },
+  { id: 'yamatonokami',     name: '大和守安定', count: 1, hasSize: false, sizeType: null,   made: false, photo: null, wip: null },
+  { id: 'tsurumaru',        name: '鶴丸国永',   count: 2, hasSize: true,  sizeType: '未脫', made: false, photo: null, wip: '紋樣繪製中' },
+  { id: 'hasebe',           name: 'へし切長谷部', count: 2, hasSize: true, sizeType: '未脫', made: false, photo: null, wip: null },
+  { id: 'imanotsurugi',     name: '今剣',       count: 1, hasSize: true,  sizeType: '未脫', made: false, photo: null, wip: null },
+  { id: 'hime',             name: '姫鶴一文字', count: 1, hasSize: false, sizeType: null,   made: false, photo: null, wip: null },
+  { id: 'juzumaru',         name: '数珠丸恒次', count: 1, hasSize: false, sizeType: null,   made: false, photo: null, wip: null },
+  { id: 'kogarasumaru',     name: '小烏丸',     count: 1, hasSize: false, sizeType: null,   made: false, photo: null, wip: null },
+  { id: 'shinano',          name: '信濃藤四郎', count: 1, hasSize: true,  sizeType: '未脫', made: false, photo: null, wip: null },
+  { id: 'kogitsune',        name: '小狐丸',     count: 1, hasSize: false, sizeType: null,   made: false, photo: null, wip: null },
+  { id: 'mutsunokami',      name: '陸奥守吉行', count: 1, hasSize: false, sizeType: null,   made: false, photo: null, wip: null },
+  { id: 'hizen',            name: '肥前忠広',   count: 1, hasSize: true,  sizeType: '未脫', made: false, photo: null, wip: null },
+  { id: 'hachisuka',        name: '蜂須賀虎徹', count: 1, hasSize: true,  sizeType: '脫衣', made: false, photo: null, wip: null },
+  { id: 'nagasone',         name: '長曽祢虎徹', count: 1, hasSize: true,  sizeType: '脫衣', made: false, photo: null, wip: null },
+  { id: 'horikawa',         name: '堀川国広',   count: 1, hasSize: true,  sizeType: '未脫', made: false, photo: null, wip: null },
+  { id: 'matsui',           name: '松井江',     count: 1, hasSize: true,  sizeType: '脫衣', made: false, photo: null, wip: null },
 ];
 
 // ---- Render ----
@@ -1028,29 +1034,27 @@ function renderCards(filter) {
   let displayed = 0;
 
   wishData.forEach(char => {
-    const hasSizes = char.wishes.some(w => w.size);
     if (filter === 'wishes' && char.made) return;
     if (filter === 'made' && !char.made) return;
-    if (filter === 'sized' && !hasSizes) return;
 
     displayed++;
     const card = document.createElement('div');
     card.className = 'char-card' + (char.made ? ' made' : '');
     card.dataset.id = char.id;
 
-    const wishCount = char.wishes.length;
-
     let photoHtml = '';
     if (char.made) {
       if (char.photo) {
-        photoHtml = `<div class="photo-area"><img src="${char.photo}" alt="${char.name}"></div>`;
+        photoHtml = `<div class="photo-area"><img src="${char.photo}" alt="${char.name}" style="max-height:100px;width:100%;object-fit:cover;"></div>`;
       } else {
         photoHtml = `<div style="font-size:10px;color:var(--ink-faint);letter-spacing:0.1em;margin-bottom:0.5rem;">📷 照片更新中</div>`;
       }
     }
 
-    const sizeLabel = hasSizes ? `<span class="size-item" style="background:var(--teal-soft);color:var(--teal);">尺寸 ✓ · ${char.wishes.find(w => w.size)?.size}</span>` : '';
-    const sizesHtml = hasSizes ? `<div class="sizes-strip">${sizeLabel}</div>` : '';
+    const sizeLabel = char.hasSize
+      ? `<span class="size-item" style="background:var(--teal-soft);color:var(--teal);">尺寸 ✓ · ${char.sizeType}</span>`
+      : '';
+    const sizesHtml = char.hasSize ? `<div class="sizes-strip">${sizeLabel}</div>` : '';
 
     const wipHtml = char.wip
       ? `<div style="margin-top:6px;font-size:10px;color:var(--gold);letter-spacing:0.08em;">↬ ${char.wip}</div>`
@@ -1060,7 +1064,7 @@ function renderCards(filter) {
       ${photoHtml}
       <div class="card-top">
         <span class="char-name">${char.name}</span>
-        ${!char.made ? `<span class="wish-count"><span class="wish-dot"></span>${wishCount} 人許願</span>` : ''}
+        ${!char.made ? `<span class="wish-count"><span class="wish-dot"></span>${char.count} 人許願</span>` : ''}
       </div>
       ${sizesHtml}
       ${wipHtml}
@@ -1088,11 +1092,9 @@ function openModal(char) {
     }
   }
 
-  const wishersHtml = '';
-
   const statusHtml = char.made
     ? `<div style="background:rgba(42,122,110,0.08);border:1px solid var(--teal-soft);padding:10px 14px;font-size:12px;color:var(--teal);letter-spacing:0.1em;margin-bottom:1rem;">✓ 此角色已製作完成</div>`
-    : `<div style="background:var(--paper-warm);border:1px solid var(--border);padding:10px 14px;font-size:12px;color:var(--ink-faint);letter-spacing:0.05em;margin-bottom:1rem;">許願中 · 共 ${char.wishes.length} 人</div>`;
+    : `<div style="background:var(--paper-warm);border:1px solid var(--border);padding:10px 14px;font-size:12px;color:var(--ink-faint);letter-spacing:0.05em;margin-bottom:1rem;">許願中 · 共 ${char.count} 人</div>`;
 
   body.innerHTML = `
     ${photoHtml}
@@ -1104,7 +1106,7 @@ function openModal(char) {
 
 function updateStats() {
   const wishChars = wishData.filter(c => !c.made);
-  const totalWishes = wishChars.reduce((s, c) => s + c.wishes.length, 0);
+  const totalWishes = wishChars.reduce((s, c) => s + c.count, 0);
   const totalChars = wishChars.length;
   const madeCount = wishData.filter(c => c.made).length;
   const total = wishData.length;
